@@ -1,8 +1,9 @@
 import React from "react";
+import app from "../Components/pages/posts/App.css";
 import * as Unicons from "@iconscout/react-unicons";
 function Sidebar() {
   return (
-    <div className="flex-[3] m-[20px] mr-6">
+    <div className="flex-[3] sidebar m-[20px] mr-6">
       <div className="flex flex-col mt-4 items-center">
         <span className="my-2 text-xl font-medium p-[5px] border-y-2 border-black">
           About Me

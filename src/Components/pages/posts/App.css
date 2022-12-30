@@ -1,0 +1,20 @@
+.App {
+  text-align: center;
+}
+
+@media only screen and (max-width: 1200px) {
+  .topimg {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1300px) {
+  .sidebar {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1200px) and (min-width: 1100px) {
+  .post {
+    width: 100%;
+    margin: 10px;
+  }
+}

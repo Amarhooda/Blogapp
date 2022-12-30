@@ -1,83 +1,84 @@
-import React from 'react'
+import React, { useState } from "react";
 import * as Unicons from "@iconscout/react-unicons";
-import "./Navbar.css"
-import { Link} from "react-router-dom";
+import "./Navbar.css";
+import { Link } from "react-router-dom";
 function Navbar() {
-  const user =false;
+  const user = true;
+  let [open, setOpen] = useState(false);
+  let Links = [
+    { name: "Home", link: "/" },
+    { name: "Write", link: "/write" },
+    { name: "Posts", link: "/posts" },
+    { name: "Contact", link: "/contact" },
+    { name: "About", link: "/about" },
+  ];
   return (
     <>
-      <div className="w-full h-[55px] bg-gradient-to-r from-blue-500 to-red-200 hover:drop-shadow-2xl shadow-black sticky top-0 flex items-center font-[Poppins]">
-        <div className="topLeft">
-          <Unicons.UilFacebook
-            className=" mx-2 cursor-pointer hover:drop-shadow-2xl shadow-black transition ease-in-out hover:scale-125"
-            size={30}
-          />
-          <Unicons.UilTwitter
-            className=" mx-2 cursor-pointer hover:drop-shadow-2xl shadow-black transition ease-in-out hover:scale-125"
-            size={30}
-          />
-          <i className="fa-brands fa-pinterest hover:drop-shadow-2xl shadow-black mx-2 cursor-pointer transition ease-in-out hover:scale-125 text-2xl"></i>
-          <Unicons.UilInstagram
-            className=" mx-2 cursor-pointer hover:drop-shadow-2xl shadow-black transition ease-in-out hover:scale-125"
-            size={30}
-          />
-        </div>
-        <div className="topCenter bg-slate-200 p-1 rounded-lg">
-          <ul className="flex font-mrdium">
-            <li className="px-8 cursor-pointer transition ease-in-out hover:scale-110 hover:bg-blue-100 hover:font-bold hover:drop-shadow-2xl shadow-black rounded-md">
-              <Link to="/">HOME</Link>
-            </li>
-            <li className="px-8 cursor-pointer transition ease-in-out hover:scale-110 hover:bg-blue-100 hover:font-bold hover:drop-shadow-2xl shadow-black rounded-md">
-              <Link to="/write">WRITE</Link>
-            </li>
-            <li className="px-8 cursor-pointer transition ease-in-out hover:scale-110 hover:bg-blue-100 hover:font-bold hover:drop-shadow-2xl shadow-black rounded-md">
-              <Link to="/post">POSTS</Link>
-            </li>
-            <li className="px-8 cursor-pointer transition ease-in-out hover:scale-110 hover:bg-blue-100 hover:font-bold hover:drop-shadow-2xl shadow-black rounded-md">
-              CONTACT
-            </li>
-            <li className="px-8 cursor-pointer transition ease-in-out hover:scale-110 hover:bg-blue-100 hover:font-bold hover:drop-shadow-2xl shadow-black rounded-md">
-              <Link to="/about">ABOUT</Link>
-            </li>
+      <div className="w-full p-0 m-0 h-[55px] bg-gradient-to-r from-blue-500 to-red-200 hover:drop-shadow-2xl shadow-black sticky ">
+        <div className="md:flex items-center justify-between py-2 md:px-2 px-3">
+          <div
+            onClick={() => setOpen(!open)}
+            className="text-3xl absolute right-5 top-2 cursor-pointer md:hidden"
+          >
+            <i className="fa-solid fa-bars" name={open ? "close" : "menu"}></i>
+          </div>
+          <ul
+            className={`md:flex md:items-center md:pb-0 pb-12 absolute rounded-lg md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl- transition-all duration-500 ease-in-out ${
+              open ? "top-10 " : "top-[-490px]"
+            }`}
+          >
+            {Links.map((link) => (
+              <li
+                key={link.name}
+                className="px-8 cursor-pointer transition ease-in-out hover:scale-110 hover:bg-blue-100 hover:font-bold hover:drop-shadow-2xl shadow-black rounded-md"
+              >
+                <Link
+                  to={link.link}
+                  className="text-gray-800 hover:text-gray-400 duration-500"
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
           </ul>
-        </div>
-        <div className="topRight">
-          {user ? (
-            <>
-              <Unicons.UilSearch
-                className=" mx-2  hover:drop-shadow-2xl shadow-black transition ease-in-out hover:scale-125 cursor-pointer"
-                size={30}
-              />
-              <Link to="/login">
-                <i className="fa-solid fa-user mx-2  transition ease-in-out hover:scale-125 text-2xl cursor-pointer hover:drop-shadow-2xl shadow-black ml-5"></i>
-              </Link>
-              <Link to="/settings">
+          <div className="topRight">
+            {user ? (
+              <>
+                <Unicons.UilSearch
+                  className=" mx-2  hover:drop-shadow-2xl shadow-black transition ease-in-out hover:scale-125 cursor-pointer"
+                  size={30}
+                />
+                <Link to="/login">
+                  <i className="fa-solid fa-user mx-2  transition ease-in-out hover:scale-125 text-2xl cursor-pointer hover:drop-shadow-2xl shadow-black ml-5"></i>
+                </Link>
+                <Link to="/settings">
+                  {" "}
+                  <i className="fa-solid fa-gear transition ease-in-out hover:scale-125 text-2xl cursor-pointer ml-5 hover:drop-shadow-2xl shadow-black"></i>
+                </Link>
+                {user && (
+                  <ul className="flex ">
+                    <li className="px-4 ml-9 max-lg:hidden cursor-pointer text-sm transition ease-in-out hover:scale-110 hover:bg-blue-100 hover:font-bold hover:drop-shadow-2xl shadow-black rounded-md">
+                      Logout
+                    </li>
+                  </ul>
+                )}
+              </>
+            ) : (
+              <ul className="flex ">
                 {" "}
-                <i className="fa-solid fa-gear transition ease-in-out hover:scale-125 text-2xl cursor-pointer ml-5 hover:drop-shadow-2xl shadow-black"></i>
-              </Link>
-              {user && (
-                <ul className="flex ">
-                  <li className="px-4 ml-9 cursor-pointer text-sm transition ease-in-out hover:scale-110 hover:bg-blue-100 hover:font-bold hover:drop-shadow-2xl shadow-black rounded-md">
-                    Logout
-                  </li>
-                </ul>
-              )}
-            </>
-          ) : (
-            <ul className="flex ">
-              {" "}
-              <li className="px-5 cursor-pointer transition ease-in-out hover:scale-110 hover:bg-blue-100 hover:font-bold hover:drop-shadow-2xl shadow-black rounded-md">
-                <Link to="/login">LOGIN</Link>
-              </li>
-              <li className="px-5 cursor-pointer transition ease-in-out hover:scale-110 hover:bg-blue-100 hover:font-bold hover:drop-shadow-2xl shadow-black rounded-md">
-                <Link to="/register">REGISTER</Link>
-              </li>
-            </ul>
-          )}
+                <li className="px-5 cursor-pointer transition ease-in-out hover:scale-110 hover:bg-blue-100 hover:font-bold hover:drop-shadow-2xl shadow-black rounded-md">
+                  <Link to="/login">LOGIN</Link>
+                </li>
+                <li className="px-5 cursor-pointer transition ease-in-out hover:scale-110 hover:bg-blue-100 hover:font-bold hover:drop-shadow-2xl shadow-black rounded-md">
+                  <Link to="/register">REGISTER</Link>
+                </li>
+              </ul>
+            )}
+          </div>
         </div>
       </div>
     </>
   );
 }
 
-export default Navbar
+export default Navbar;

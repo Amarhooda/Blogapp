@@ -1,13 +1,13 @@
 import React from "react";
-
+import app from "./App.css"
 function Posts() {
   return (
     <div >
-      <div className="w-[450px] mx-5 flex flex-col mb-4">
-        <img
+      <div className="w-[450px] post mx-5 flex flex-col mb-4">
+        <img 
           src="https://source.unsplash.com/random/?Nature,Tech,Cryptocurrency/"
           alt="Imagehere"
-          className="w-[450px] h-[280px] rounded object-cover"
+          className="w-[450px] post h-[280px] rounded object-cover"
         />
         <div className="flex flex-col items-center">
           <div className="my-2">
