@@ -23,7 +23,7 @@ function Navbar() {
             <i className="fa-solid fa-bars" name={open ? "close" : "menu"}></i>
           </div>
           <ul
-            className={`md:flex md:items-center md:pb-0 pb-12 absolute rounded-lg md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl- transition-all duration-500 ease-in-out ${
+            className={`md:flex md:items-center md:pb-0 pb-8 absolute rounded-lg md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl- transition-all duration-500 ease-in-out ${
               open ? "top-10 " : "top-[-490px]"
             }`}
           >
